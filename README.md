@@ -31,9 +31,9 @@ A modern SaaS-inspired landing page built with HTML, CSS, and JavaScript. Code S
 
 ### Mobile View
 <img width="517" height="766" alt="image" src="https://github.com/user-attachments/assets/6fc8dca0-b2a8-4225-9ca5-f9494b616849" />
-
+##
 <img width="513" height="765" alt="image" src="https://github.com/user-attachments/assets/8b226c8a-2ebb-4e02-9cf6-c4039199e2bc" />
-
+##
 <img width="461" height="765" alt="image" src="https://github.com/user-attachments/assets/5f8e4805-3a77-4d7b-9067-730fb064264f" />
 
 ## Installation
