@@ -1,4 +1,4 @@
-# Code Switcher
+<img width="1899" height="913" alt="image" src="https://github.com/user-attachments/assets/eb5deb13-8fac-43b6-9434-41af03bf6a83" /><img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/99f78f80-4f70-4c69-ac8f-0d8c55785b77" /># Code Switcher
 
 A modern SaaS-inspired landing page built with HTML, CSS, and JavaScript. Code Switcher showcases a polished developer-focused interface featuring responsive layouts, animated UI elements, interactive code tabs, syntax highlighting, and a mobile-first navigation experience.
 
@@ -25,12 +25,16 @@ A modern SaaS-inspired landing page built with HTML, CSS, and JavaScript. Code S
 ## Screenshots
 
 ### Desktop View
+<img width="1913" height="971" alt="image" src="https://github.com/user-attachments/assets/54b27bbc-4088-4eac-98bf-b0e861fd2b20" />
 
-
+<img width="1899" height="913" alt="image" src="https://github.com/user-attachments/assets/c0cf31ae-d39c-422e-9888-a4eb03f3467c" />
 
 ### Mobile View
+<img width="517" height="766" alt="image" src="https://github.com/user-attachments/assets/6fc8dca0-b2a8-4225-9ca5-f9494b616849" />
 
+<img width="513" height="765" alt="image" src="https://github.com/user-attachments/assets/8b226c8a-2ebb-4e02-9cf6-c4039199e2bc" />
 
+<img width="461" height="765" alt="image" src="https://github.com/user-attachments/assets/5f8e4805-3a77-4d7b-9067-730fb064264f" />
 
 ## Installation
 
@@ -85,7 +89,7 @@ This project helped strengthen my understanding of:
 * Deploy live API examples
 
 ## Live Demo
-
+https://codeswitch-sable.vercel.app/
 
 ## Author
 
