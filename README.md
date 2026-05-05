@@ -1,5 +1,3 @@
-<img width="1899" height="913" alt="image" src="https://github.com/user-attachments/assets/eb5deb13-8fac-43b6-9434-41af03bf6a83" /><img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/99f78f80-4f70-4c69-ac8f-0d8c55785b77" /># Code Switcher
-
 A modern SaaS-inspired landing page built with HTML, CSS, and JavaScript. Code Switcher showcases a polished developer-focused interface featuring responsive layouts, animated UI elements, interactive code tabs, syntax highlighting, and a mobile-first navigation experience.
 
 ## Features
@@ -26,6 +24,8 @@ A modern SaaS-inspired landing page built with HTML, CSS, and JavaScript. Code S
 
 ### Desktop View
 <img width="1913" height="971" alt="image" src="https://github.com/user-attachments/assets/54b27bbc-4088-4eac-98bf-b0e861fd2b20" />
+
+
 
 <img width="1899" height="913" alt="image" src="https://github.com/user-attachments/assets/c0cf31ae-d39c-422e-9888-a4eb03f3467c" />
 
