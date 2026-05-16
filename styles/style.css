@@ -157,6 +157,12 @@ body {
   color: #ffffff;
 }
 
+@media (max-width: 768px) {
+  .container__title {
+    padding-top: 40px;
+  }
+}
+
 .container__description {
   font-size: 18px;
   font-family: "Geist Sans", sans-serif;
