@@ -1,6 +1,8 @@
 # Code Switcher
 A modern SaaS-inspired landing page built with HTML, CSS, and JavaScript. Code Switcher showcases a polished developer-focused interface featuring responsive layouts, animated UI elements, interactive code tabs, syntax highlighting, and a mobile-first navigation experience.
 
+<img width="1913" height="971" alt="image" src="https://github.com/user-attachments/assets/54b27bbc-4088-4eac-98bf-b0e861fd2b20" />
+
 ## Live Demo
 https://codeswitch-sable.vercel.app/
 
