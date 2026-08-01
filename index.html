@@ -50,10 +50,10 @@
           <a href="#" class="header__link">Discord</a>
         </nav>
         <div class="header__auth">
-          <button class="header__button header__button--create">
+          <button type="button" class="header__button header__button--create">
             Create Account
           </button>
-          <button class="header__button header__button--sign-in">
+          <button type="button" class="header__button header__button--sign-in">
             Sign In
           </button>
         </div>
@@ -69,10 +69,16 @@
         alongside an intuitive REST API with a public OpenAPI specification.
       </p>
       <div class="container__buttons">
-        <button class="container__button container__button--get-started">
+        <button
+          type="button"
+          class="container__button container__button--get-started"
+        >
           Get Started
         </button>
-        <button class="container__button container__button--view-docs">
+        <button
+          type="button"
+          class="container__button container__button--view-docs"
+        >
           <span>Visit the docs </span><i class="fas fa-arrow-right"></i>
         </button>
       </div>
@@ -80,33 +86,34 @@
       <div class="code-container">
         <div class="code-container__tabs">
           <button
+            type="button"
             class="code-container__tab code-container__tab--active"
             data-language="typescript"
           >
             <i class="fab fa-js-square code-container__icon"></i>
             Typescript
           </button>
-          <button class="code-container__tab" data-language="python">
+          <button type="button" class="code-container__tab" data-language="python">
             <i class="fab fa-python code-container__icon"></i>
             Python
           </button>
-          <button class="code-container__tab" data-language="rust">
+          <button type="button" class="code-container__tab" data-language="rust">
             <i class="fab fa-rust code-container__icon"></i>
             Rust
           </button>
-          <button class="code-container__tab" data-language="golang">
+          <button type="button" class="code-container__tab" data-language="golang">
             <i class="fab fa-google code-container__icon"></i>
             Golang
           </button>
-          <button class="code-container__tab" data-language="curl">
+          <button type="button" class="code-container__tab" data-language="curl">
             <i class="fas fa-terminal code-container__icon"></i>
             Curl
           </button>
-          <button class="code-container__tab" data-language="elixir">
+          <button type="button" class="code-container__tab" data-language="elixir">
             <i class="fab fa-phoenix-framework code-container__icon"></i>
             Elixir
           </button>
-          <button class="code-container__tab" data-language="java">
+          <button type="button" class="code-container__tab" data-language="java">
             <i class="fab fa-java code-container__icon"></i>
             Java
           </button>
@@ -250,7 +257,7 @@ public class APIController {
         We believe strongly in the value of open source: our codebase and
         development process is available to learn from and contribute to.
       </p>
-      <button class="github-button">
+      <button type="button" class="github-button">
         <i class="fab fa-github"></i> View on GitHub
       </button>
       <div class="gitPulse">
