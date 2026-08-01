@@ -47,7 +47,7 @@ https://codeswitch-sable.vercel.app/
 Clone the repository:
 
 ```bash
-git https://github.com/Alvarez-J1/Code-Switcher
+git clone https://github.com/Alvarez-J1/Code-Switcher.git
 ```
 
 Navigate into the project folder:
