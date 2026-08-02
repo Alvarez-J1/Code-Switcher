@@ -18,6 +18,10 @@ https://codeswitch-sable.vercel.app/
 * Open-source showcase section
 * Modern dark-themed SaaS UI inspired by real developer tools
 
+## Portfolio Notes
+
+Additional implementation notes are available in [docs/portfolio](docs/portfolio/README.md).
+
 ## Tech Stack
 
 * HTML5
