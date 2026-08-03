@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (prefersReducedMotion) {
+    return;
+  }
+
   const numStars = 10;
   const starsContainer = document.createDocumentFragment();
 
