@@ -41,6 +41,15 @@ document.addEventListener("DOMContentLoaded", function () {
   tabs.forEach((tab) => {
     tab.addEventListener("click", function () {
       const language = this.getAttribute("data-language");
+      const codeBlock = document.querySelector(
+        `.code-container__code--${language}`,
+      );
+      const code = codeBlock?.querySelector("code");
+
+      if (!codeBlock || !code) {
+        console.error(`No code block found for language: ${language}`);
+        return;
+      }
 
       // Remove active class from all tabs and code blocks
       tabs.forEach((t) => {
@@ -55,16 +64,11 @@ document.addEventListener("DOMContentLoaded", function () {
       // Add active class to the clicked tab and corresponding code block
       this.classList.add("code-container__tab--active");
       this.setAttribute("aria-pressed", "true");
-      document
-        .querySelector(`.code-container__code--${language}`)
-        .classList.add("code-container__code--active");
-      document.querySelector(`.code-container__code--${language}`).hidden =
-        false;
+      codeBlock.classList.add("code-container__code--active");
+      codeBlock.hidden = false;
 
       // Re-highlight the code block for Prism.js
-      Prism.highlightElement(
-        document.querySelector(`.code-container__code--${language} code`),
-      );
+      Prism.highlightElement(code);
     });
   });
 
