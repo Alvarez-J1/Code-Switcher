@@ -12,6 +12,11 @@ function copyCode() {
 
   const text = activeCode.textContent; // textContent gets all the text inside an element.
 
+  if (!navigator.clipboard?.writeText) {
+    console.error("Clipboard API is not available.");
+    return;
+  }
+
   navigator.clipboard
     .writeText(text)
     .then(() => {
