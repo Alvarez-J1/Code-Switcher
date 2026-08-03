@@ -37,10 +37,22 @@
     <header class="header">
       <div class="header__inner">
         <div class="header__inner-left">
-          <div class="mobile-menu-icon"><i class="fas fa-bars"></i></div>
+          <button
+            type="button"
+            class="mobile-menu-icon"
+            aria-label="Toggle navigation menu"
+            aria-controls="primary-navigation"
+            aria-expanded="false"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
           <h1 class="header__title">CodeSwitch</h1>
         </div>
-        <nav class="header__nav" aria-label="Primary navigation">
+        <nav
+          class="header__nav"
+          id="primary-navigation"
+          aria-label="Primary navigation"
+        >
           <a href="#" class="header__link">About</a>
           <a href="#" class="header__link">Blog</a>
           <a href="#" class="header__link">Pricing</a>
@@ -290,12 +302,5 @@ public class APIController {
     </footer>
     <script src="js/script.js"></script>
     <script src="js/stars.js"></script>
-    <script>
-      document
-        .querySelector(".mobile-menu-icon")
-        .addEventListener("click", function () {
-          document.querySelector(".header__nav").classList.toggle("active");
-        });
-    </script>
   </body>
 </html>

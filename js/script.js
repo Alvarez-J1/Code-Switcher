@@ -18,8 +18,15 @@ function copyCode() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  const mobileMenuButton = document.querySelector(".mobile-menu-icon");
+  const nav = document.querySelector(".header__nav");
   const tabs = document.querySelectorAll(".code-container__tab");
   const codeBlocks = document.querySelectorAll(".code-container__code");
+
+  mobileMenuButton.addEventListener("click", function () {
+    const isOpen = nav.classList.toggle("active");
+    mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
+  });
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", function () {
