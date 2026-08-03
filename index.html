@@ -44,7 +44,7 @@
             aria-controls="primary-navigation"
             aria-expanded="false"
           >
-            <i class="fas fa-bars"></i>
+            <i class="fas fa-bars" aria-hidden="true"></i>
           </button>
           <h1 class="header__title">CodeSwitch</h1>
         </div>
@@ -91,7 +91,8 @@
           type="button"
           class="container__button container__button--view-docs"
         >
-          <span>Visit the docs </span><i class="fas fa-arrow-right"></i>
+          <span>Visit the docs </span>
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
         </button>
       </div>
       <div class="code-container-bg-blur"></div>
@@ -106,31 +107,52 @@
             class="code-container__tab code-container__tab--active"
             data-language="typescript"
           >
-            <i class="fab fa-js-square code-container__icon"></i>
+            <i
+              class="fab fa-js-square code-container__icon"
+              aria-hidden="true"
+            ></i>
             Typescript
           </button>
           <button type="button" class="code-container__tab" data-language="python">
-            <i class="fab fa-python code-container__icon"></i>
+            <i
+              class="fab fa-python code-container__icon"
+              aria-hidden="true"
+            ></i>
             Python
           </button>
           <button type="button" class="code-container__tab" data-language="rust">
-            <i class="fab fa-rust code-container__icon"></i>
+            <i
+              class="fab fa-rust code-container__icon"
+              aria-hidden="true"
+            ></i>
             Rust
           </button>
           <button type="button" class="code-container__tab" data-language="golang">
-            <i class="fab fa-google code-container__icon"></i>
+            <i
+              class="fab fa-google code-container__icon"
+              aria-hidden="true"
+            ></i>
             Golang
           </button>
           <button type="button" class="code-container__tab" data-language="curl">
-            <i class="fas fa-terminal code-container__icon"></i>
+            <i
+              class="fas fa-terminal code-container__icon"
+              aria-hidden="true"
+            ></i>
             Curl
           </button>
           <button type="button" class="code-container__tab" data-language="elixir">
-            <i class="fab fa-phoenix-framework code-container__icon"></i>
+            <i
+              class="fab fa-phoenix-framework code-container__icon"
+              aria-hidden="true"
+            ></i>
             Elixir
           </button>
           <button type="button" class="code-container__tab" data-language="java">
-            <i class="fab fa-java code-container__icon"></i>
+            <i
+              class="fab fa-java code-container__icon"
+              aria-hidden="true"
+            ></i>
             Java
           </button>
         </div>
@@ -142,7 +164,7 @@
             aria-label="Copy code to clipboard"
             title="Copy code to clipboard"
           >
-            <i class="fas fa-copy"></i>
+            <i class="fas fa-copy" aria-hidden="true"></i>
           </button>
           <pre
             class="code-container__code code-container__code--typescript code-container__code--active line-numbers"
@@ -273,7 +295,7 @@ public class APIController {
         development process is available to learn from and contribute to.
       </p>
       <button type="button" class="github-button">
-        <i class="fab fa-github"></i> View on GitHub
+        <i class="fab fa-github" aria-hidden="true"></i> View on GitHub
       </button>
       <div class="gitPulse">
         <img
