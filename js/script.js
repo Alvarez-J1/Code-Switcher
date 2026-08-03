@@ -33,13 +33,17 @@ document.addEventListener("DOMContentLoaded", function () {
       const language = this.getAttribute("data-language");
 
       // Remove active class from all tabs and code blocks
-      tabs.forEach((t) => t.classList.remove("code-container__tab--active"));
+      tabs.forEach((t) => {
+        t.classList.remove("code-container__tab--active");
+        t.setAttribute("aria-pressed", "false");
+      });
       codeBlocks.forEach((c) =>
         c.classList.remove("code-container__code--active"),
       );
 
       // Add active class to the clicked tab and corresponding code block
       this.classList.add("code-container__tab--active");
+      this.setAttribute("aria-pressed", "true");
       document
         .querySelector(`.code-container__code--${language}`)
         .classList.add("code-container__code--active");
