@@ -37,9 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
         t.classList.remove("code-container__tab--active");
         t.setAttribute("aria-pressed", "false");
       });
-      codeBlocks.forEach((c) =>
-        c.classList.remove("code-container__code--active"),
-      );
+      codeBlocks.forEach((c) => {
+        c.classList.remove("code-container__code--active");
+        c.hidden = true;
+      });
 
       // Add active class to the clicked tab and corresponding code block
       this.classList.add("code-container__tab--active");
@@ -47,6 +48,8 @@ document.addEventListener("DOMContentLoaded", function () {
       document
         .querySelector(`.code-container__code--${language}`)
         .classList.add("code-container__code--active");
+      document.querySelector(`.code-container__code--${language}`).hidden =
+        false;
 
       // Re-highlight the code block for Prism.js
       Prism.highlightElement(
