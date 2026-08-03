@@ -68,7 +68,9 @@ document.addEventListener("DOMContentLoaded", function () {
       codeBlock.hidden = false;
 
       // Re-highlight the code block for Prism.js
-      Prism.highlightElement(code);
+      if (window.Prism?.highlightElement) {
+        Prism.highlightElement(code);
+      }
     });
   });
 
