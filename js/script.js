@@ -5,6 +5,11 @@ function copyCode() {
     ".code-container__code--active code",
   );
 
+  if (!activeCode) {
+    console.error("No active code block found to copy.");
+    return;
+  }
+
   const text = activeCode.textContent; // textContent gets all the text inside an element.
 
   navigator.clipboard
