@@ -76,6 +76,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Footer animation
   const footer = document.querySelector(".footer__inner");
+  if (!footer || !("IntersectionObserver" in window)) {
+    return;
+  }
+
   const footerSpans = footer.querySelectorAll("span");
   const observer = new IntersectionObserver(
     (entries) => {
