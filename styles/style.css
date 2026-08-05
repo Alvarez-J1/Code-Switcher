@@ -641,6 +641,7 @@ button.container__button--view-docs span {
   background-color: #1a2929;
   border: 2px solid #3f3f3f;
   color: #fff;
+  text-decoration: none;
   font-size: 16px;
   padding: 10px 20px;
   border-radius: 8px;
