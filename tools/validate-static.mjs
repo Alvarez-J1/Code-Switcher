@@ -17,6 +17,7 @@ const getAttribute = (markup, attribute) => {
   const match = markup.match(new RegExp(`${attribute}="([^"]*)"`, "i"));
   return match?.[1] ?? "";
 };
+const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 const ids = new Map();
 for (const match of html.matchAll(/\sid="([^"]+)"/g)) {
@@ -66,6 +67,34 @@ for (const match of html.matchAll(/<button\b[^>]*>[\s\S]*?<\/button>/g)) {
 for (const match of html.matchAll(/aria-controls="([^"]+)"/g)) {
   if (!ids.has(match[1])) {
     fail(`aria-controls points to a missing id: ${match[1]}`);
+  }
+}
+
+for (const match of html.matchAll(/<button\b[^>]*\brole="tab"[^>]*>/g)) {
+  const tabMarkup = match[0];
+  const tabId = getAttribute(tabMarkup, "id");
+  const panelId = getAttribute(tabMarkup, "aria-controls");
+  const selected = getAttribute(tabMarkup, "aria-selected");
+
+  if (!tabId) {
+    fail(`Tab is missing an id: ${tabMarkup}`);
+  }
+
+  if (!panelId) {
+    fail(`Tab is missing aria-controls: ${tabMarkup}`);
+  }
+
+  if (selected !== "true" && selected !== "false") {
+    fail(`Tab has invalid aria-selected value: ${tabMarkup}`);
+  }
+
+  const panelPattern = new RegExp(
+    `<pre\\b(?=[^>]*\\bid="${escapeRegExp(panelId)}")(?=[^>]*\\brole="tabpanel")(?=[^>]*\\baria-labelledby="${escapeRegExp(tabId)}")`,
+    "i",
+  );
+
+  if (tabId && panelId && !panelPattern.test(html)) {
+    fail(`Tab ${tabId} is not linked to a matching tabpanel ${panelId}`);
   }
 }
 
