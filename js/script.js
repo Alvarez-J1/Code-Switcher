@@ -32,45 +32,76 @@ document.addEventListener("DOMContentLoaded", function () {
   const nav = document.querySelector(".header__nav");
   const tabs = document.querySelectorAll(".code-container__tab");
   const codeBlocks = document.querySelectorAll(".code-container__code");
+  const tabList = Array.from(tabs);
 
   mobileMenuButton.addEventListener("click", function () {
     const isOpen = nav.classList.toggle("active");
     mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
   });
 
+  const activateTab = (tab, shouldFocus = false) => {
+    const language = tab.getAttribute("data-language");
+    const codeBlock = document.querySelector(
+      `.code-container__code--${language}`,
+    );
+    const code = codeBlock?.querySelector("code");
+
+    if (!codeBlock || !code) {
+      console.error(`No code block found for language: ${language}`);
+      return;
+    }
+
+    // Remove active class from all tabs and code blocks
+    tabs.forEach((t) => {
+      t.classList.remove("code-container__tab--active");
+      t.setAttribute("aria-selected", "false");
+      t.tabIndex = -1;
+    });
+    codeBlocks.forEach((c) => {
+      c.classList.remove("code-container__code--active");
+      c.hidden = true;
+    });
+
+    // Add active class to the clicked tab and corresponding code block
+    tab.classList.add("code-container__tab--active");
+    tab.setAttribute("aria-selected", "true");
+    tab.tabIndex = 0;
+    codeBlock.classList.add("code-container__code--active");
+    codeBlock.hidden = false;
+
+    if (shouldFocus) {
+      tab.focus();
+    }
+
+    // Re-highlight the code block for Prism.js
+    if (window.Prism?.highlightElement) {
+      Prism.highlightElement(code);
+    }
+  };
+
   tabs.forEach((tab) => {
     tab.addEventListener("click", function () {
-      const language = this.getAttribute("data-language");
-      const codeBlock = document.querySelector(
-        `.code-container__code--${language}`,
-      );
-      const code = codeBlock?.querySelector("code");
+      activateTab(this);
+    });
 
-      if (!codeBlock || !code) {
-        console.error(`No code block found for language: ${language}`);
+    tab.addEventListener("keydown", function (event) {
+      const currentIndex = tabList.indexOf(this);
+      let nextIndex = currentIndex;
+
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+        nextIndex = (currentIndex + 1) % tabList.length;
+      } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+        nextIndex = (currentIndex - 1 + tabList.length) % tabList.length;
+      } else if (event.key === "Home") {
+        nextIndex = 0;
+      } else if (event.key === "End") {
+        nextIndex = tabList.length - 1;
+      } else {
         return;
       }
 
-      // Remove active class from all tabs and code blocks
-      tabs.forEach((t) => {
-        t.classList.remove("code-container__tab--active");
-        t.setAttribute("aria-selected", "false");
-      });
-      codeBlocks.forEach((c) => {
-        c.classList.remove("code-container__code--active");
-        c.hidden = true;
-      });
-
-      // Add active class to the clicked tab and corresponding code block
-      this.classList.add("code-container__tab--active");
-      this.setAttribute("aria-selected", "true");
-      codeBlock.classList.add("code-container__code--active");
-      codeBlock.hidden = false;
-
-      // Re-highlight the code block for Prism.js
-      if (window.Prism?.highlightElement) {
-        Prism.highlightElement(code);
-      }
+      event.preventDefault();
+      activateTab(tabList[nextIndex], true);
     });
   });
 
