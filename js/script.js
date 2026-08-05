@@ -1,5 +1,18 @@
 //CopyCode
 
+function updateCopyStatus(message) {
+  const copyStatus = document.querySelector("#copy-status");
+
+  if (!copyStatus) {
+    return;
+  }
+
+  copyStatus.textContent = "";
+  setTimeout(() => {
+    copyStatus.textContent = message;
+  }, 0);
+}
+
 function copyCode() {
   const activeCode = document.querySelector(
     ".code-container__code--active code",
@@ -20,9 +33,11 @@ function copyCode() {
   navigator.clipboard
     .writeText(text)
     .then(() => {
+      updateCopyStatus("Code copied to clipboard.");
       alert("Code copied!");
     })
     .catch((err) => {
+      updateCopyStatus("Unable to copy code.");
       console.error("Failed to copy:", err);
     });
 }
