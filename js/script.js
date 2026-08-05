@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Remove active class from all tabs and code blocks
       tabs.forEach((t) => {
         t.classList.remove("code-container__tab--active");
-        t.setAttribute("aria-pressed", "false");
+        t.setAttribute("aria-selected", "false");
       });
       codeBlocks.forEach((c) => {
         c.classList.remove("code-container__code--active");
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Add active class to the clicked tab and corresponding code block
       this.classList.add("code-container__tab--active");
-      this.setAttribute("aria-pressed", "true");
+      this.setAttribute("aria-selected", "true");
       codeBlock.classList.add("code-container__code--active");
       codeBlock.hidden = false;
 

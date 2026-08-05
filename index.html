@@ -98,14 +98,17 @@
       <div class="code-container">
         <div
           class="code-container__tabs"
-          role="group"
+          role="tablist"
           aria-label="Code examples by language"
         >
           <button
             type="button"
             class="code-container__tab code-container__tab--active"
             data-language="typescript"
-            aria-pressed="true"
+            id="tab-typescript"
+            role="tab"
+            aria-controls="panel-typescript"
+            aria-selected="true"
           >
             <i
               class="fab fa-js-square code-container__icon"
@@ -117,7 +120,10 @@
             type="button"
             class="code-container__tab"
             data-language="python"
-            aria-pressed="false"
+            id="tab-python"
+            role="tab"
+            aria-controls="panel-python"
+            aria-selected="false"
           >
             <i
               class="fab fa-python code-container__icon"
@@ -129,7 +135,10 @@
             type="button"
             class="code-container__tab"
             data-language="rust"
-            aria-pressed="false"
+            id="tab-rust"
+            role="tab"
+            aria-controls="panel-rust"
+            aria-selected="false"
           >
             <i
               class="fab fa-rust code-container__icon"
@@ -141,7 +150,10 @@
             type="button"
             class="code-container__tab"
             data-language="golang"
-            aria-pressed="false"
+            id="tab-golang"
+            role="tab"
+            aria-controls="panel-golang"
+            aria-selected="false"
           >
             <i
               class="fab fa-google code-container__icon"
@@ -153,7 +165,10 @@
             type="button"
             class="code-container__tab"
             data-language="curl"
-            aria-pressed="false"
+            id="tab-curl"
+            role="tab"
+            aria-controls="panel-curl"
+            aria-selected="false"
           >
             <i
               class="fas fa-terminal code-container__icon"
@@ -165,7 +180,10 @@
             type="button"
             class="code-container__tab"
             data-language="elixir"
-            aria-pressed="false"
+            id="tab-elixir"
+            role="tab"
+            aria-controls="panel-elixir"
+            aria-selected="false"
           >
             <i
               class="fab fa-phoenix-framework code-container__icon"
@@ -177,7 +195,10 @@
             type="button"
             class="code-container__tab"
             data-language="java"
-            aria-pressed="false"
+            id="tab-java"
+            role="tab"
+            aria-controls="panel-java"
+            aria-selected="false"
           >
             <i
               class="fab fa-java code-container__icon"
@@ -197,6 +218,9 @@
             <i class="fas fa-copy" aria-hidden="true"></i>
           </button>
           <pre
+            id="panel-typescript"
+            role="tabpanel"
+            aria-labelledby="tab-typescript"
             class="code-container__code code-container__code--typescript code-container__code--active line-numbers"
           ><code class="language-typescript">import { verifyKey } from '@codeswitch/api'
 
@@ -216,6 +240,9 @@ if (!result.valid) {
 // handle request
                 </code></pre>
           <pre
+            id="panel-python"
+            role="tabpanel"
+            aria-labelledby="tab-python"
             class="code-container__code code-container__code--python line-numbers"
             hidden
           ><code class="language-python">import asyncio
@@ -235,6 +262,9 @@ async def main() -> None:
     }
                 </code></pre>
           <pre
+            id="panel-rust"
+            role="tabpanel"
+            aria-labelledby="tab-rust"
             class="code-container__code code-container__code--rust line-numbers"
             hidden
           ><code class="language-rust">use codeswitch::models::{VerifyKeyRequest, Wrapped};
@@ -251,6 +281,9 @@ async fn verify_key() {
     }
 }  </code></pre>
           <pre
+            id="panel-golang"
+            role="tabpanel"
+            aria-labelledby="tab-golang"
             class="code-container__code code-container__code--golang line-numbers"
             hidden
           ><code class="language-go">package main
@@ -276,6 +309,9 @@ func main() {
 }
                 </code></pre>
           <pre
+            id="panel-curl"
+            role="tabpanel"
+            aria-labelledby="tab-curl"
             class="code-container__code code-container__code--curl line-numbers"
             hidden
           ><code class="language-bash">curl --request POST \
@@ -287,6 +323,9 @@ func main() {
 }'
                 </code></pre>
           <pre
+            id="panel-elixir"
+            role="tabpanel"
+            aria-labelledby="tab-elixir"
             class="code-container__code code-container__code--elixir line-numbers"
             hidden
           ><code class="language-elixir">CodeswitchElixirSdk.verify_key("xyz_AS5HDbkXXPot2MMoPHD8jnL")
@@ -301,6 +340,9 @@ func main() {
 }
                 </code></pre>
           <pre
+            id="panel-java"
+            role="tabpanel"
+            aria-labelledby="tab-java"
             class="code-container__code code-container__code--java line-numbers"
             hidden
           ><code class="language-java">package com.example.myapp;
