@@ -35,10 +35,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const codeBlocks = document.querySelectorAll(".code-container__code");
   const tabList = Array.from(tabs);
 
-  mobileMenuButton.addEventListener("click", function () {
-    const isOpen = nav.classList.toggle("active");
-    mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
-  });
+  if (mobileMenuButton && nav) {
+    mobileMenuButton.addEventListener("click", function () {
+      const isOpen = nav.classList.toggle("active");
+      mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
+    });
+  }
 
   copyButton?.addEventListener("click", copyCode);
 
