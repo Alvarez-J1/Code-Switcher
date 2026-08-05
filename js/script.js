@@ -160,6 +160,17 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const footerSpans = footer.querySelectorAll("span");
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (prefersReducedMotion) {
+    footerSpans.forEach((span) => {
+      span.classList.add("animate");
+    });
+    return;
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
