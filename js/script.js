@@ -54,6 +54,13 @@ document.addEventListener("DOMContentLoaded", function () {
       closeMobileMenu();
       mobileMenuButton.focus();
     });
+
+    const desktopNavigationQuery = window.matchMedia("(min-width: 1050px)");
+    desktopNavigationQuery.addEventListener("change", function (event) {
+      if (event.matches) {
+        closeMobileMenu();
+      }
+    });
   }
 
   copyButton?.addEventListener("click", copyCode);
