@@ -36,14 +36,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const tabList = Array.from(tabs);
 
   if (mobileMenuButton && nav) {
+    const setMobileMenuExpanded = (isOpen) => {
+      nav.classList.toggle("active", isOpen);
+      mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
+      mobileMenuButton.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu",
+      );
+    };
+
     const closeMobileMenu = () => {
-      nav.classList.remove("active");
-      mobileMenuButton.setAttribute("aria-expanded", "false");
+      setMobileMenuExpanded(false);
     };
 
     mobileMenuButton.addEventListener("click", function () {
-      const isOpen = nav.classList.toggle("active");
-      mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
+      setMobileMenuExpanded(!nav.classList.contains("active"));
     });
 
     document.addEventListener("keydown", function (event) {
