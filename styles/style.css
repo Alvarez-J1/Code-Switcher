@@ -492,7 +492,7 @@ pre[class*="language-"].line-numbers > code {
 }
 
 .copy-icon:hover,
-.fa-copy:hover {
+.copy-icon:hover .fa-copy {
   color: #828282;
   cursor: pointer;
 }
