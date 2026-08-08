@@ -19,6 +19,7 @@ function copyCode() {
   );
 
   if (!activeCode) {
+    updateCopyStatus("No active code block is available to copy.");
     console.error("No active code block found to copy.");
     return;
   }
@@ -26,6 +27,7 @@ function copyCode() {
   const text = activeCode.textContent; // textContent gets all the text inside an element.
 
   if (!navigator.clipboard?.writeText) {
+    updateCopyStatus("Clipboard access is not available.");
     console.error("Clipboard API is not available.");
     return;
   }
