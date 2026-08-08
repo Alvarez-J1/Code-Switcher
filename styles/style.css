@@ -107,6 +107,7 @@ body {
 .mobile-menu-icon:focus-visible,
 .container__button:focus-visible,
 .code-container__tab:focus-visible,
+.code-container__code:focus-visible,
 .copy-icon:focus-visible,
 .github-button:focus-visible {
   outline: 2px solid #ffffff;
