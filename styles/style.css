@@ -427,6 +427,7 @@ pre[class*="language-"].line-numbers > code {
 .star {
   position: fixed;
   top: -10vh;
+  pointer-events: none;
   width: 1px;
   height: 100px;
   background: linear-gradient(to bottom, transparent, white, transparent);
