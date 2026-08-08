@@ -80,11 +80,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     const desktopNavigationQuery = window.matchMedia("(min-width: 1050px)");
-    desktopNavigationQuery.addEventListener("change", function (event) {
+    const handleDesktopNavigationChange = (event) => {
       if (event.matches) {
         closeMobileMenu();
       }
-    });
+    };
+
+    if (desktopNavigationQuery.addEventListener) {
+      desktopNavigationQuery.addEventListener(
+        "change",
+        handleDesktopNavigationChange,
+      );
+    } else {
+      desktopNavigationQuery.addListener(handleDesktopNavigationChange);
+    }
   }
 
   copyButton?.addEventListener("click", copyCode);
