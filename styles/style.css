@@ -71,10 +71,6 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-.header__inner-left {
-  flex-direction: row;
-  gap: 0;
-}
 @media screen and (min-width: 425px) {
   .header__title {
     margin: 0;
