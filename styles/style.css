@@ -627,8 +627,7 @@ button.container__button--view-docs span {
     gap: 2rem;
   }
 
-  .header__nav.active,
-  .header__auth.active {
+  .header__nav.active {
     display: flex;
     flex-direction: column;
     align-items: center;
