@@ -332,7 +332,7 @@ pre[class*="language-"].line-numbers > code {
   counter-increment: linenumber;
 }
 
-.line-numbers-rows > span:before {
+.line-numbers-rows > span::before {
   content: counter(linenumber);
   color: #4f4f4f;
   display: block;
