@@ -66,6 +66,13 @@ for (const match of html.matchAll(/<img\b[^>]*>/g)) {
   }
 }
 
+for (const match of html.matchAll(/<i\b[^>]*>/g)) {
+  const ariaHidden = getAttribute(match[0], "aria-hidden");
+  if (ariaHidden !== "true") {
+    fail(`Decorative icon is missing aria-hidden="true": ${match[0]}`);
+  }
+}
+
 for (const match of html.matchAll(/<button\b[^>]*>[\s\S]*?<\/button>/g)) {
   const type = getAttribute(match[0], "type");
   const ariaLabel = getAttribute(match[0], "aria-label");
