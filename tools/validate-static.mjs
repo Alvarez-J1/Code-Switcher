@@ -75,6 +75,14 @@ for (const match of html.matchAll(/<button\b[^>]*>[\s\S]*?<\/button>/g)) {
   }
 }
 
+for (const match of html.matchAll(/<a\b[^>]*\starget="_blank"[^>]*>/g)) {
+  const rel = getAttribute(match[0], "rel").toLowerCase().split(/\s+/);
+
+  if (!rel.includes("noopener")) {
+    fail(`New-tab link is missing rel="noopener": ${match[0]}`);
+  }
+}
+
 for (const match of html.matchAll(/aria-controls="([^"]+)"/g)) {
   if (!ids.has(match[1])) {
     fail(`aria-controls points to a missing id: ${match[1]}`);
