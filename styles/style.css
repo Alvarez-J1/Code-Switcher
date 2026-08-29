@@ -33,7 +33,7 @@ body {
 
 .skip-link:focus-visible {
   transform: translateY(0);
-  outline: 2px solid #ffffff;
+  outline: 2px solid #00ffe0;
   outline-offset: 3px;
 }
 
