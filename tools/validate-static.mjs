@@ -45,6 +45,11 @@ if (!documentTitle) {
   fail("Document is missing a non-empty title.");
 }
 
+const descriptionMeta = html.match(/<meta\b(?=[^>]*\bname="description")[^>]*>/i)?.[0] ?? "";
+if (!getAttribute(descriptionMeta, "content").trim()) {
+  fail("Document is missing a non-empty meta description.");
+}
+
 for (const match of html.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
   const value = match[1];
   if (
