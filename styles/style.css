@@ -583,7 +583,6 @@ button.container__button--view-docs span {
   }
 
   .header__auth {
-    display: flex;
     flex-wrap: wrap;
   }
 
