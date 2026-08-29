@@ -629,7 +629,6 @@ button.container__button--view-docs span {
 .open-source-section {
   text-align: center;
   padding: 50px 20px;
-  /*background: linear-gradient(180deg, #000000, #0b0b0b);*/
   width: 100%;
   margin: 0 auto;
   z-index: 1;
