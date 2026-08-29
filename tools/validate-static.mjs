@@ -48,6 +48,17 @@ for (const match of html.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
   }
 }
 
+const scriptSources = new Map();
+for (const match of html.matchAll(/<script\b[^>]*\ssrc="([^"]+)"[^>]*><\/script>/g)) {
+  scriptSources.set(match[1], (scriptSources.get(match[1]) ?? 0) + 1);
+}
+
+for (const [source, count] of scriptSources) {
+  if (count > 1) {
+    fail(`Duplicate script source found: ${source}`);
+  }
+}
+
 for (const match of html.matchAll(/<img\b[^>]*>/g)) {
   const alt = getAttribute(match[0], "alt");
   if (!alt.trim()) {
