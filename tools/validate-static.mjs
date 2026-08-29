@@ -70,6 +70,16 @@ for (const match of html.matchAll(/aria-controls="([^"]+)"/g)) {
   }
 }
 
+for (const match of html.matchAll(/aria-labelledby="([^"]+)"/g)) {
+  const labelIds = match[1].trim().split(/\s+/);
+
+  for (const id of labelIds) {
+    if (!ids.has(id)) {
+      fail(`aria-labelledby points to a missing id: ${id}`);
+    }
+  }
+}
+
 for (const match of html.matchAll(/<button\b[^>]*\brole="tab"[^>]*>/g)) {
   const tabMarkup = match[0];
   const tabId = getAttribute(tabMarkup, "id");
