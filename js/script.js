@@ -104,6 +104,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const activateTab = (tab, shouldFocus = false) => {
     const language = tab.getAttribute("data-language");
+
+    if (!language) {
+      console.error("Code tab is missing a data-language value.");
+      return;
+    }
+
     const codeBlock = document.querySelector(
       `.code-container__code--${language}`,
     );
