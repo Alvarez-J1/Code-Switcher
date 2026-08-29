@@ -30,6 +30,11 @@ for (const [id, count] of ids) {
   }
 }
 
+const mainElements = [...html.matchAll(/<main\b[^>]*>/g)];
+if (mainElements.length !== 1) {
+  fail(`Expected exactly one main landmark, found ${mainElements.length}.`);
+}
+
 for (const match of html.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
   const value = match[1];
   if (
