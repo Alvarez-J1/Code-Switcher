@@ -1,5 +1,8 @@
 //CopyCode
 
+const DESKTOP_NAVIGATION_QUERY = "(min-width: 1050px)";
+const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+
 function updateCopyStatus(message) {
   const copyStatus = document.querySelector("#copy-status");
 
@@ -81,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     if (supportsMatchMedia) {
-      const desktopNavigationQuery = window.matchMedia("(min-width: 1050px)");
+      const desktopNavigationQuery = window.matchMedia(DESKTOP_NAVIGATION_QUERY);
       const handleDesktopNavigationChange = (event) => {
         if (event.matches) {
           closeMobileMenu();
@@ -176,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const footerSpans = footer.querySelectorAll("span");
   const prefersReducedMotion =
     supportsMatchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.matchMedia(REDUCED_MOTION_QUERY).matches;
 
   if (prefersReducedMotion) {
     footerSpans.forEach((span) => {
