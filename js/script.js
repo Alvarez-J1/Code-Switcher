@@ -25,7 +25,7 @@ function copyCode() {
     return;
   }
 
-  const text = activeCode.textContent; // textContent gets all the text inside an element.
+  const text = activeCode.textContent;
 
   if (!navigator.clipboard?.writeText) {
     updateCopyStatus("Clipboard access is not available.");
