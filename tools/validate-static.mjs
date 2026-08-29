@@ -178,6 +178,13 @@ for (const tabMarkup of tabButtons) {
   }
 }
 
+const activeCodePanels = [
+  ...html.matchAll(/<pre\b(?=[^>]*\brole="tabpanel")(?=[^>]*\bcode-container__code--active\b)[^>]*>/g),
+];
+if (activeCodePanels.length !== 1) {
+  fail(`Expected exactly one active code panel, found ${activeCodePanels.length}.`);
+}
+
 for (const match of html.matchAll(/data-language="([^"]+)"/g)) {
   const language = match[1];
   if (!html.includes(`code-container__code--${language}`)) {
