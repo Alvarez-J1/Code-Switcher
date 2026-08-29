@@ -25,7 +25,7 @@ function copyCode() {
     return;
   }
 
-  const text = activeCode.textContent;
+  const text = activeCode.textContent ?? "";
 
   if (!navigator.clipboard?.writeText) {
     updateCopyStatus("Clipboard access is not available.");
