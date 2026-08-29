@@ -1,4 +1,5 @@
 const DESKTOP_NAVIGATION_QUERY = "(min-width: 1050px)";
+const FOOTER_LETTER_DELAY_MS = 100;
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
 function updateCopyStatus(message) {
@@ -204,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
           footerSpans.forEach((span, index) => {
             setTimeout(() => {
               span.classList.add("animate");
-            }, index * 100); // Delay each letter by 100ms
+            }, index * FOOTER_LETTER_DELAY_MS);
           });
           observer.unobserve(footer); // Unobserve after animation triggers
         }
