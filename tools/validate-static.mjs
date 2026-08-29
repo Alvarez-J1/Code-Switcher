@@ -59,6 +59,10 @@ for (const [source, count] of scriptSources) {
   }
 }
 
+for (const match of html.matchAll(/\son[a-z]+\s*=/gi)) {
+  fail(`Inline event handler found: ${match[0].trim()}`);
+}
+
 for (const match of html.matchAll(/<img\b[^>]*>/g)) {
   const alt = getAttribute(match[0], "alt");
   if (!alt.trim()) {
