@@ -52,8 +52,6 @@ body {
 .header {
   width: 100%;
   padding: 2px 0;
-  justify-content: space-between;
-  align-items: center;
   border-bottom: 1px solid #323232;
   background: linear-gradient(180deg, #000000, #181818);
   position: fixed;
