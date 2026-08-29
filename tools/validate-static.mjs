@@ -40,6 +40,11 @@ if (!htmlLang.trim()) {
   fail("The html element is missing a non-empty lang attribute.");
 }
 
+const documentTitle = stripTags(html.match(/<title\b[^>]*>[\s\S]*?<\/title>/i)?.[0] ?? "");
+if (!documentTitle) {
+  fail("Document is missing a non-empty title.");
+}
+
 for (const match of html.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
   const value = match[1];
   if (
