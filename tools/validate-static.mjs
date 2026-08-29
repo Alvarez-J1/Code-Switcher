@@ -67,9 +67,15 @@ for (const match of html.matchAll(/<img\b[^>]*>/g)) {
 }
 
 for (const match of html.matchAll(/<button\b[^>]*>[\s\S]*?<\/button>/g)) {
+  const type = getAttribute(match[0], "type");
   const ariaLabel = getAttribute(match[0], "aria-label");
   const title = getAttribute(match[0], "title");
   const visibleText = stripTags(match[0]);
+
+  if (type !== "button") {
+    fail(`Button is missing type="button": ${match[0]}`);
+  }
+
   if (!ariaLabel && !title && !visibleText) {
     fail(`Button is missing an accessible name: ${match[0]}`);
   }
