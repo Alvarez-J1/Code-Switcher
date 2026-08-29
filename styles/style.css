@@ -220,12 +220,6 @@ body {
   cursor: pointer;
 }
 
-.container__button.container__button--view-docs {
-  background: transparent;
-  color: white;
-  border: 1px solid transparent;
-}
-
 .code-container {
   background: radial-gradient(#444444, #000000);
   border: 1px solid #282828;
