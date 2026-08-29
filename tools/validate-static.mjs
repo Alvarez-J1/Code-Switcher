@@ -178,11 +178,25 @@ for (const tabMarkup of tabButtons) {
   }
 }
 
-const activeCodePanels = [
-  ...html.matchAll(/<pre\b(?=[^>]*\brole="tabpanel")(?=[^>]*\bcode-container__code--active\b)[^>]*>/g),
-];
+const codePanels = [...html.matchAll(/<pre\b(?=[^>]*\brole="tabpanel")[^>]*>/g)].map((match) => match[0]);
+const activeCodePanels = codePanels.filter((panelMarkup) =>
+  getAttribute(panelMarkup, "class").split(/\s+/).includes("code-container__code--active"),
+);
 if (activeCodePanels.length !== 1) {
   fail(`Expected exactly one active code panel, found ${activeCodePanels.length}.`);
+}
+
+for (const panelMarkup of codePanels) {
+  const isActive = getAttribute(panelMarkup, "class").split(/\s+/).includes("code-container__code--active");
+  const isHidden = /\shidden(?:\s|>|=)/i.test(panelMarkup);
+
+  if (isActive && isHidden) {
+    fail(`Active code panel should not be hidden: ${panelMarkup}`);
+  }
+
+  if (!isActive && !isHidden) {
+    fail(`Inactive code panel is missing hidden: ${panelMarkup}`);
+  }
 }
 
 for (const match of html.matchAll(/data-language="([^"]+)"/g)) {
