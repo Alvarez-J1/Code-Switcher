@@ -1,5 +1,3 @@
-//CopyCode
-
 const DESKTOP_NAVIGATION_QUERY = "(min-width: 1050px)";
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
