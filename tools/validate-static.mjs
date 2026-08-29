@@ -5,7 +5,10 @@ import { dirname, join } from "node:path";
 const root = process.cwd();
 const htmlPath = join(root, "index.html");
 const htmlDir = dirname(htmlPath);
+const cssPath = join(root, "styles", "style.css");
+const cssDir = dirname(cssPath);
 const html = readFileSync(htmlPath, "utf8");
+const css = readFileSync(cssPath, "utf8");
 const failures = [];
 
 const fail = (message) => {
@@ -65,6 +68,18 @@ for (const match of html.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
   const assetPath = join(htmlDir, value.split("#")[0]);
   if (!existsSync(assetPath)) {
     fail(`Referenced asset is missing: ${value}`);
+  }
+}
+
+for (const match of css.matchAll(/@import\s+url\((["']?)([^"')]+)\1\)/g)) {
+  const value = match[2];
+  if (/^(https?:)?\/\//.test(value) || value.startsWith("data:")) {
+    continue;
+  }
+
+  const importPath = join(cssDir, value);
+  if (!existsSync(importPath)) {
+    fail(`CSS import is missing: ${value}`);
   }
 }
 
