@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Re-highlight the code block for Prism.js
     if (window.Prism?.highlightElement) {
-      Prism.highlightElement(code);
+      window.Prism.highlightElement(code);
     }
   };
 
