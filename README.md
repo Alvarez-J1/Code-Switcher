@@ -33,11 +33,11 @@ Additional implementation notes are available in [docs/portfolio](docs/portfolio
 ## Screenshots
 
 ### Desktop View
-<img width="1913" height="971" alt="image" src="https://github.com/user-attachments/assets/54b27bbc-4088-4eac-98bf-b0e861fd2b20" />
+<img width="1913" height="971" alt="Code Switcher desktop view with hero and code example tabs" src="https://github.com/user-attachments/assets/54b27bbc-4088-4eac-98bf-b0e861fd2b20" />
 
-##
+### Open-source Section
 
-<img width="1899" height="913" alt="image" src="https://github.com/user-attachments/assets/c0cf31ae-d39c-422e-9888-a4eb03f3467c" />
+<img width="1899" height="913" alt="Code Switcher open-source section with GitHub call-to-action" src="https://github.com/user-attachments/assets/c0cf31ae-d39c-422e-9888-a4eb03f3467c" />
 
 ### Mobile View
 ### <img width="517" height="766" alt="image" src="https://github.com/user-attachments/assets/6fc8dca0-b2a8-4225-9ca5-f9494b616849" />
