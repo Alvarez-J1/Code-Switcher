@@ -136,8 +136,13 @@ for (const match of html.matchAll(/aria-labelledby="([^"]+)"/g)) {
   }
 }
 
-for (const match of html.matchAll(/<button\b[^>]*\brole="tab"[^>]*>/g)) {
-  const tabMarkup = match[0];
+const tabButtons = [...html.matchAll(/<button\b[^>]*\brole="tab"[^>]*>/g)].map((match) => match[0]);
+const selectedTabs = tabButtons.filter((tabMarkup) => getAttribute(tabMarkup, "aria-selected") === "true");
+if (selectedTabs.length !== 1) {
+  fail(`Expected exactly one selected code tab, found ${selectedTabs.length}.`);
+}
+
+for (const tabMarkup of tabButtons) {
   const tabId = getAttribute(tabMarkup, "id");
   const panelId = getAttribute(tabMarkup, "aria-controls");
   const selected = getAttribute(tabMarkup, "aria-selected");
