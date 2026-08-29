@@ -69,12 +69,6 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-@media screen and (min-width: 425px) {
-  .header__title {
-    margin: 0;
-  }
-}
-
 .header__nav {
   display: none;
 }
