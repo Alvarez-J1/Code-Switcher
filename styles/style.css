@@ -532,7 +532,6 @@ button.container__button--view-docs {
   display: flex;
   align-items: center;
   position: relative;
-  background: none;
   border: none;
   color: #fff;
   font-size: 18px;
