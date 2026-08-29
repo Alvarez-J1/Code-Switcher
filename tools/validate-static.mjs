@@ -83,6 +83,18 @@ for (const match of css.matchAll(/@import\s+url\((["']?)([^"')]+)\1\)/g)) {
   }
 }
 
+for (const match of css.matchAll(/url\((["']?)([^"')]+)\1\)/g)) {
+  const value = match[2];
+  if (/^(https?:)?\/\//.test(value) || value.startsWith("data:") || value.startsWith("#")) {
+    continue;
+  }
+
+  const assetPath = join(cssDir, value.split("#")[0]);
+  if (!existsSync(assetPath)) {
+    fail(`CSS asset is missing: ${value}`);
+  }
+}
+
 const scriptSources = new Map();
 for (const match of html.matchAll(/<script\b[^>]*\ssrc="([^"]+)"[^>]*><\/script>/g)) {
   scriptSources.set(match[1], (scriptSources.get(match[1]) ?? 0) + 1);
