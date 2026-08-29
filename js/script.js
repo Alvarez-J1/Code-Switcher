@@ -155,6 +155,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     tab.addEventListener("keydown", function (event) {
       const currentIndex = tabList.indexOf(this);
+
+      if (currentIndex === -1) {
+        return;
+      }
+
       let nextIndex = currentIndex;
 
       if (event.key === "ArrowRight" || event.key === "ArrowDown") {
