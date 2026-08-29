@@ -146,6 +146,7 @@ for (const tabMarkup of tabButtons) {
   const tabId = getAttribute(tabMarkup, "id");
   const panelId = getAttribute(tabMarkup, "aria-controls");
   const selected = getAttribute(tabMarkup, "aria-selected");
+  const tabindex = getAttribute(tabMarkup, "tabindex");
 
   if (!tabId) {
     fail(`Tab is missing an id: ${tabMarkup}`);
@@ -157,6 +158,14 @@ for (const tabMarkup of tabButtons) {
 
   if (selected !== "true" && selected !== "false") {
     fail(`Tab has invalid aria-selected value: ${tabMarkup}`);
+  }
+
+  if (selected === "true" && tabindex !== "0") {
+    fail(`Selected tab is missing tabindex="0": ${tabMarkup}`);
+  }
+
+  if (selected === "false" && tabindex !== "-1") {
+    fail(`Unselected tab is missing tabindex="-1": ${tabMarkup}`);
   }
 
   const panelPattern = new RegExp(
