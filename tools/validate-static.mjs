@@ -229,6 +229,9 @@ for (const tabMarkup of tabButtons) {
 }
 
 const codePanels = [...html.matchAll(/<pre\b(?=[^>]*\brole="tabpanel")[^>]*>/g)].map((match) => match[0]);
+const controlledPanelIds = new Set(
+  tabButtons.map((tabMarkup) => getAttribute(tabMarkup, "aria-controls")),
+);
 const activeCodePanels = codePanels.filter((panelMarkup) =>
   getAttribute(panelMarkup, "class").split(/\s+/).includes("code-container__code--active"),
 );
@@ -237,8 +240,13 @@ if (activeCodePanels.length !== 1) {
 }
 
 for (const panelMarkup of codePanels) {
+  const panelId = getAttribute(panelMarkup, "id");
   const isActive = getAttribute(panelMarkup, "class").split(/\s+/).includes("code-container__code--active");
   const isHidden = /\shidden(?:\s|>|=)/i.test(panelMarkup);
+
+  if (!controlledPanelIds.has(panelId)) {
+    fail(`Code panel is not controlled by a tab: ${panelMarkup}`);
+  }
 
   if (getAttribute(panelMarkup, "tabindex") !== "0") {
     fail(`Code panel is missing tabindex="0": ${panelMarkup}`);
