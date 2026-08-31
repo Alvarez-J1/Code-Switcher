@@ -84,6 +84,15 @@ if (mobileMenuExpanded !== "true" && mobileMenuExpanded !== "false") {
   fail("Mobile menu button has an invalid aria-expanded value.");
 }
 
+const copyStatus = html.match(/<span\b(?=[^>]*\bid="copy-status")[^>]*>/i)?.[0] ?? "";
+if (
+  getAttribute(copyStatus, "role") !== "status" ||
+  getAttribute(copyStatus, "aria-live") !== "polite" ||
+  getAttribute(copyStatus, "aria-atomic") !== "true"
+) {
+  fail("Copy status element must be a polite atomic status region.");
+}
+
 for (const match of html.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
   const value = match[1];
   if (
