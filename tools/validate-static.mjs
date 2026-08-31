@@ -93,6 +93,11 @@ if (
   fail("Copy status element must be a polite atomic status region.");
 }
 
+const copyButton = html.match(/<button\b(?=[^>]*\bclass="[^"]*\bcopy-icon\b)[^>]*>/i)?.[0] ?? "";
+if (getAttribute(copyButton, "aria-describedby") !== "copy-status") {
+  fail("Copy button must reference the copy status element.");
+}
+
 for (const match of html.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
   const value = match[1];
   if (
