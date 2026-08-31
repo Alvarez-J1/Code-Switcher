@@ -240,6 +240,10 @@ for (const panelMarkup of codePanels) {
   const isActive = getAttribute(panelMarkup, "class").split(/\s+/).includes("code-container__code--active");
   const isHidden = /\shidden(?:\s|>|=)/i.test(panelMarkup);
 
+  if (getAttribute(panelMarkup, "tabindex") !== "0") {
+    fail(`Code panel is missing tabindex="0": ${panelMarkup}`);
+  }
+
   if (isActive && isHidden) {
     fail(`Active code panel should not be hidden: ${panelMarkup}`);
   }
