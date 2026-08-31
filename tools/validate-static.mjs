@@ -226,6 +226,12 @@ for (const match of html.matchAll(/aria-controls="([^"]+)"/g)) {
   }
 }
 
+for (const match of html.matchAll(/aria-label="([^"]*)"/g)) {
+  if (!match[1].trim()) {
+    fail("Empty aria-label found.");
+  }
+}
+
 for (const match of html.matchAll(/aria-labelledby="([^"]+)"/g)) {
   const labelIds = match[1].trim().split(/\s+/);
 
