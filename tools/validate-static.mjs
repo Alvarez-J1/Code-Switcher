@@ -73,6 +73,17 @@ if (!stripTags(skipLinkMarkup) && !getAttribute(skipLink, "aria-label")) {
   fail("Skip link is missing an accessible name.");
 }
 
+const mobileMenuButton = html.match(/<button\b(?=[^>]*\bclass="[^"]*\bmobile-menu-icon\b)[^>]*>/i)?.[0] ?? "";
+const mobileMenuControls = getAttribute(mobileMenuButton, "aria-controls");
+const mobileMenuExpanded = getAttribute(mobileMenuButton, "aria-expanded");
+if (!mobileMenuControls || !ids.has(mobileMenuControls)) {
+  fail("Mobile menu button must control an existing navigation id.");
+}
+
+if (mobileMenuExpanded !== "true" && mobileMenuExpanded !== "false") {
+  fail("Mobile menu button has an invalid aria-expanded value.");
+}
+
 for (const match of html.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
   const value = match[1];
   if (
