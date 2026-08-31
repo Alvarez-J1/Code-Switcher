@@ -17,6 +17,26 @@ function updateCopyStatus(message) {
   }, 0);
 }
 
+function getNextTabIndex(key, currentIndex, tabCount) {
+  if (NEXT_TAB_KEYS.has(key)) {
+    return (currentIndex + 1) % tabCount;
+  }
+
+  if (PREVIOUS_TAB_KEYS.has(key)) {
+    return (currentIndex - 1 + tabCount) % tabCount;
+  }
+
+  if (key === "Home") {
+    return 0;
+  }
+
+  if (key === "End") {
+    return tabCount - 1;
+  }
+
+  return null;
+}
+
 function copyCode() {
   const activeCode = document.querySelector(
     ".code-container__code--active code",
@@ -163,17 +183,13 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      let nextIndex = currentIndex;
+      const nextIndex = getNextTabIndex(
+        event.key,
+        currentIndex,
+        tabList.length,
+      );
 
-      if (NEXT_TAB_KEYS.has(event.key)) {
-        nextIndex = (currentIndex + 1) % tabList.length;
-      } else if (PREVIOUS_TAB_KEYS.has(event.key)) {
-        nextIndex = (currentIndex - 1 + tabList.length) % tabList.length;
-      } else if (event.key === "Home") {
-        nextIndex = 0;
-      } else if (event.key === "End") {
-        nextIndex = tabList.length - 1;
-      } else {
+      if (nextIndex === null) {
         return;
       }
 
