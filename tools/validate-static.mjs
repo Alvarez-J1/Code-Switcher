@@ -236,6 +236,16 @@ for (const match of html.matchAll(/aria-labelledby="([^"]+)"/g)) {
   }
 }
 
+for (const match of html.matchAll(/aria-describedby="([^"]+)"/g)) {
+  const descriptionIds = match[1].trim().split(/\s+/);
+
+  for (const id of descriptionIds) {
+    if (!ids.has(id)) {
+      fail(`aria-describedby points to a missing id: ${id}`);
+    }
+  }
+}
+
 const tabButtons = [...html.matchAll(/<button\b[^>]*\brole="tab"[^>]*>/g)].map((match) => match[0]);
 const selectedTabs = tabButtons.filter((tabMarkup) => getAttribute(tabMarkup, "aria-selected") === "true");
 if (selectedTabs.length !== 1) {
