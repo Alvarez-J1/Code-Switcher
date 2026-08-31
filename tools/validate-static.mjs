@@ -62,6 +62,12 @@ if (!getAttribute(descriptionMeta, "content").trim()) {
   fail("Document is missing a non-empty meta description.");
 }
 
+const skipLink = html.match(/<a\b(?=[^>]*\bclass="[^"]*\bskip-link\b)[^>]*>/i)?.[0] ?? "";
+const skipLinkTarget = getAttribute(skipLink, "href").replace(/^#/, "");
+if (!skipLinkTarget || !ids.has(skipLinkTarget)) {
+  fail("Skip link must point to an existing page id.");
+}
+
 for (const match of html.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
   const value = match[1];
   if (
