@@ -136,6 +136,10 @@ for (const match of html.matchAll(/<img\b[^>]*>/g)) {
   if (getAttribute(match[0], "loading") !== "lazy") {
     fail(`Image is missing loading="lazy": ${match[0]}`);
   }
+
+  if (getAttribute(match[0], "decoding") !== "async") {
+    fail(`Image is missing decoding="async": ${match[0]}`);
+  }
 }
 
 for (const match of html.matchAll(/<i\b[^>]*>/g)) {
