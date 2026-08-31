@@ -38,6 +38,10 @@ if (mainElements.length !== 1) {
   fail(`Expected exactly one main landmark, found ${mainElements.length}.`);
 }
 
+if (mainElements[0] && !getAttribute(mainElements[0][0], "aria-labelledby")) {
+  fail("Main landmark is missing aria-labelledby.");
+}
+
 const h1Elements = [...html.matchAll(/<h1\b[^>]*>/g)];
 if (h1Elements.length !== 1) {
   fail(`Expected exactly one h1, found ${h1Elements.length}.`);
