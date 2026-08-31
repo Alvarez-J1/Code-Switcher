@@ -38,6 +38,11 @@ if (mainElements.length !== 1) {
   fail(`Expected exactly one main landmark, found ${mainElements.length}.`);
 }
 
+const h1Elements = [...html.matchAll(/<h1\b[^>]*>/g)];
+if (h1Elements.length !== 1) {
+  fail(`Expected exactly one h1, found ${h1Elements.length}.`);
+}
+
 const htmlLang = html.match(/<html\b[^>]*\slang="([^"]+)"/i)?.[1] ?? "";
 if (!htmlLang.trim()) {
   fail("The html element is missing a non-empty lang attribute.");
