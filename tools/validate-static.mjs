@@ -132,6 +132,10 @@ for (const match of html.matchAll(/<img\b[^>]*>/g)) {
   if (!getAttribute(match[0], "width") || !getAttribute(match[0], "height")) {
     fail(`Image is missing intrinsic dimensions: ${match[0]}`);
   }
+
+  if (getAttribute(match[0], "loading") !== "lazy") {
+    fail(`Image is missing loading="lazy": ${match[0]}`);
+  }
 }
 
 for (const match of html.matchAll(/<i\b[^>]*>/g)) {
