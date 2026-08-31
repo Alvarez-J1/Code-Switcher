@@ -124,6 +124,13 @@ for (const match of html.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
   }
 }
 
+for (const match of html.matchAll(/<link\b(?=[^>]*\brel="preconnect")[^>]*>/g)) {
+  const href = getAttribute(match[0], "href");
+  if (/^https?:\/\//.test(href) && !/\scrossorigin(?:\s|>|=)/i.test(match[0])) {
+    fail(`External preconnect is missing crossorigin: ${match[0]}`);
+  }
+}
+
 for (const match of css.matchAll(/@import\s+url\((["']?)([^"')]+)\1\)/g)) {
   const value = match[2];
   if (/^(https?:)?\/\//.test(value) || value.startsWith("data:")) {
