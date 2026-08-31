@@ -128,6 +128,10 @@ for (const match of html.matchAll(/<img\b[^>]*>/g)) {
   if (!alt.trim()) {
     fail(`Image is missing alt text: ${match[0]}`);
   }
+
+  if (!getAttribute(match[0], "width") || !getAttribute(match[0], "height")) {
+    fail(`Image is missing intrinsic dimensions: ${match[0]}`);
+  }
 }
 
 for (const match of html.matchAll(/<i\b[^>]*>/g)) {
