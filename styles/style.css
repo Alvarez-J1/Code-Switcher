@@ -146,7 +146,7 @@ body {
 .header__button:hover {
   background-color: #262626;
   color: #fff;
-  border: 1px solid #a4a4a4;
+  border-color: #a4a4a4;
 }
 
 .header__button--sign-in {
@@ -210,7 +210,7 @@ body {
 
 .container__button:hover {
   background-color: #262626;
-  border: 1px solid #d7d7d7;
+  border-color: #d7d7d7;
   color: #fff;
 }
 
