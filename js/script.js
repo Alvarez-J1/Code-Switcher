@@ -3,7 +3,7 @@ const FOOTER_LETTER_DELAY_MS = 100;
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
 function updateCopyStatus(message) {
-  const copyStatus = document.querySelector("#copy-status");
+  const copyStatus = document.getElementById("copy-status");
 
   if (!copyStatus) {
     return;
