@@ -84,6 +84,14 @@ if (mobileMenuExpanded !== "true" && mobileMenuExpanded !== "false") {
   fail("Mobile menu button has an invalid aria-expanded value.");
 }
 
+const primaryNavigation = html.match(/<nav\b(?=[^>]*\bid="primary-navigation")[^>]*>/i)?.[0] ?? "";
+if (
+  !primaryNavigation ||
+  (!getAttribute(primaryNavigation, "aria-label") && !getAttribute(primaryNavigation, "aria-labelledby"))
+) {
+  fail("Primary navigation must exist and have an accessible name.");
+}
+
 const copyStatus = html.match(/<span\b(?=[^>]*\bid="copy-status")[^>]*>/i)?.[0] ?? "";
 if (
   getAttribute(copyStatus, "role") !== "status" ||
