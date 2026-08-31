@@ -1,6 +1,8 @@
 const DESKTOP_NAVIGATION_QUERY = "(min-width: 1050px)";
 const FOOTER_LETTER_DELAY_MS = 100;
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+const NEXT_TAB_KEYS = new Set(["ArrowRight", "ArrowDown"]);
+const PREVIOUS_TAB_KEYS = new Set(["ArrowLeft", "ArrowUp"]);
 
 function updateCopyStatus(message) {
   const copyStatus = document.getElementById("copy-status");
@@ -163,9 +165,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       let nextIndex = currentIndex;
 
-      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      if (NEXT_TAB_KEYS.has(event.key)) {
         nextIndex = (currentIndex + 1) % tabList.length;
-      } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      } else if (PREVIOUS_TAB_KEYS.has(event.key)) {
         nextIndex = (currentIndex - 1 + tabList.length) % tabList.length;
       } else if (event.key === "Home") {
         nextIndex = 0;
