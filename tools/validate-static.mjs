@@ -180,6 +180,13 @@ if (selectedTabs.length !== 1) {
 
 for (const match of html.matchAll(/<[^>]+\brole="tablist"[^>]*>/g)) {
   const orientation = getAttribute(match[0], "aria-orientation");
+  const label = getAttribute(match[0], "aria-label");
+  const labelledBy = getAttribute(match[0], "aria-labelledby");
+
+  if (!label && !labelledBy) {
+    fail(`Tablist is missing an accessible name: ${match[0]}`);
+  }
+
   if (orientation !== "horizontal" && orientation !== "vertical") {
     fail(`Tablist has invalid aria-orientation: ${match[0]}`);
   }
