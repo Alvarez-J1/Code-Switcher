@@ -67,13 +67,21 @@ Open the project with Live Server or simply open `index.html` in your browser.
 ```bash
 code-switcher/
 │
-├── index.html
-├── styles/
-│   └── style.css
+├── docs/
+│   └── portfolio/
+├── images/
+│   ├── circuits.jpg
+│   └── gitpulse.svg
 ├── js/
 │   ├── script.js
 │   └── stars.js
-├── images/
+├── index.html
+├── styles/
+│   ├── fonts.css
+│   └── style.css
+├── tools/
+│   └── validate-static.mjs
+├── git.png
 └── README.md
 ```
 
