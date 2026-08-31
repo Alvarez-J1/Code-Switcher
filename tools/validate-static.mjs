@@ -154,6 +154,10 @@ for (const match of html.matchAll(/<a\b[^>]*\starget="_blank"[^>]*>/g)) {
   if (!rel.includes("noopener")) {
     fail(`New-tab link is missing rel="noopener": ${match[0]}`);
   }
+
+  if (!rel.includes("noreferrer")) {
+    fail(`New-tab link is missing rel="noreferrer": ${match[0]}`);
+  }
 }
 
 for (const match of html.matchAll(/aria-controls="([^"]+)"/g)) {
