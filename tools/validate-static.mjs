@@ -178,6 +178,13 @@ if (selectedTabs.length !== 1) {
   fail(`Expected exactly one selected code tab, found ${selectedTabs.length}.`);
 }
 
+for (const match of html.matchAll(/<[^>]+\brole="tablist"[^>]*>/g)) {
+  const orientation = getAttribute(match[0], "aria-orientation");
+  if (orientation !== "horizontal" && orientation !== "vertical") {
+    fail(`Tablist has invalid aria-orientation: ${match[0]}`);
+  }
+}
+
 for (const tabMarkup of tabButtons) {
   const tabId = getAttribute(tabMarkup, "id");
   const panelId = getAttribute(tabMarkup, "aria-controls");
