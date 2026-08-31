@@ -62,10 +62,15 @@ if (!getAttribute(descriptionMeta, "content").trim()) {
   fail("Document is missing a non-empty meta description.");
 }
 
-const skipLink = html.match(/<a\b(?=[^>]*\bclass="[^"]*\bskip-link\b)[^>]*>/i)?.[0] ?? "";
+const skipLinkMarkup = html.match(/<a\b(?=[^>]*\bclass="[^"]*\bskip-link\b)[\s\S]*?<\/a>/i)?.[0] ?? "";
+const skipLink = skipLinkMarkup.match(/<a\b[^>]*>/i)?.[0] ?? "";
 const skipLinkTarget = getAttribute(skipLink, "href").replace(/^#/, "");
 if (!skipLinkTarget || !ids.has(skipLinkTarget)) {
   fail("Skip link must point to an existing page id.");
+}
+
+if (!stripTags(skipLinkMarkup) && !getAttribute(skipLink, "aria-label")) {
+  fail("Skip link is missing an accessible name.");
 }
 
 for (const match of html.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
