@@ -106,6 +106,10 @@ for (const match of css.matchAll(/url\((["']?)([^"')]+)\1\)/g)) {
 
 const scriptSources = new Map();
 for (const match of html.matchAll(/<script\b[^>]*\ssrc="([^"]+)"[^>]*><\/script>/g)) {
+  if (!/\sdefer(?:\s|>|=)/i.test(match[0])) {
+    fail(`Script is missing defer: ${match[0]}`);
+  }
+
   scriptSources.set(match[1], (scriptSources.get(match[1]) ?? 0) + 1);
 }
 
