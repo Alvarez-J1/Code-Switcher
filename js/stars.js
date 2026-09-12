@@ -1,18 +1,14 @@
 const STAR_COUNT = 10;
-const STAR_MIN_DURATION_SECONDS = 10;
-const STAR_DURATION_RANGE_SECONDS = 40;
-const STAR_DELAY_RANGE_SECONDS = 15;
-const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+const STAR_MIN_DURATION_SECONDS = 5;
+const STAR_DURATION_RANGE_SECONDS = 10;
+const STAR_DELAY_RANGE_SECONDS = 5;
+const STAR_REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
 document.addEventListener("DOMContentLoaded", () => {
   const supportsMatchMedia = typeof window.matchMedia === "function";
   const prefersReducedMotion =
     supportsMatchMedia &&
-    window.matchMedia(REDUCED_MOTION_QUERY).matches;
-
-  if (prefersReducedMotion) {
-    return;
-  }
+    window.matchMedia(STAR_REDUCED_MOTION_QUERY).matches;
 
   const starsContainer = document.createDocumentFragment();
 
@@ -21,10 +17,19 @@ document.addEventListener("DOMContentLoaded", () => {
     star.classList.add("star");
     star.setAttribute("aria-hidden", "true");
     star.style.left = `${Math.random() * 100}vw`;
-    star.style.animationDuration = `${
-      Math.random() * STAR_DURATION_RANGE_SECONDS + STAR_MIN_DURATION_SECONDS
-    }s`;
-    star.style.animationDelay = `${Math.random() * STAR_DELAY_RANGE_SECONDS}s`;
+
+    if (prefersReducedMotion) {
+      star.classList.add("star--static");
+      star.style.top = `${Math.random() * 80 + 10}vh`;
+    } else {
+      star.style.animationDuration = `${
+        Math.random() * STAR_DURATION_RANGE_SECONDS + STAR_MIN_DURATION_SECONDS
+      }s`;
+      star.style.animationDelay = `-${
+        Math.random() * STAR_DELAY_RANGE_SECONDS
+      }s`;
+    }
+
     starsContainer.appendChild(star);
   }
 

@@ -399,12 +399,18 @@ pre[class*="language-"].line-numbers > code {
 .star {
   position: fixed;
   top: -10vh;
+  z-index: 1;
   pointer-events: none;
   width: 1px;
   height: 100px;
   background: linear-gradient(to bottom, transparent, white, transparent);
   opacity: 0;
   animation: fall 3s linear infinite;
+}
+
+.star--static {
+  opacity: 0.35;
+  animation: none;
 }
 
 @keyframes twinkling {
@@ -441,7 +447,11 @@ pre[class*="language-"].line-numbers > code {
   }
 
   .star {
-    display: none;
+    display: block;
+  }
+
+  .star--static::after {
+    animation: none;
   }
 }
 
@@ -531,7 +541,7 @@ button.container__button--view-docs {
   font-size: 18px;
   cursor: pointer;
   margin: 0;
-  background: #1a2929;
+  background: transparent;
   font-family: "Geist Sans", sans-serif;
 }
 
